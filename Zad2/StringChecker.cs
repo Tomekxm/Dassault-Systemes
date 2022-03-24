@@ -18,7 +18,10 @@ namespace Zad2
 
         public string StringToCheck { get => _stringToCheck; set => _stringToCheck = value; }
 
-        public bool IsStringValid() 
+        //tu możnaby się jeszcze zastanowić nad przykładami w stylu "()))((()", które nie zostały
+        //ujęte w testach, a wyglądają na niepoprawne (choć funkcja zwróci true) 
+        
+        public bool IsStringValid()
         {
             if (StringToCheck.StartsWith(')') || StringToCheck.EndsWith('(')) return false;
             else
