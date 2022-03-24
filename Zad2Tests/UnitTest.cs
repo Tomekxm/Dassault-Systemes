@@ -10,7 +10,7 @@ namespace Zad2Tests
         public void IsStringValid_WhenIsValid_ShouldReturnTrue()
         {
             StringChecker stringChecker = new StringChecker();
-            string[] testChar = new string[] { "(((()()))())", "(((()()))()))", ")((((()))()))", "()()()()()()()()", "((((((((()))))))(", "((()))()(())" };
+            string[] testChar = new string[] { "(((()()))())", "(((()()))()))", ")((((()))()))", "()()()()()()()()", "((((((((()))))))(", "((()))()(())", "())(()" };
             stringChecker.StringToCheck = testChar[0];
             Assert.AreEqual(true, stringChecker.IsStringValid());
 
@@ -28,6 +28,9 @@ namespace Zad2Tests
 
             stringChecker.StringToCheck = testChar[5];
             Assert.AreEqual(true, stringChecker.IsStringValid());
+
+            stringChecker.StringToCheck = testChar[6];
+            Assert.AreEqual(false, stringChecker.IsStringValid());
         }
     }
 }
