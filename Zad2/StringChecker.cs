@@ -23,25 +23,21 @@ namespace Zad2
         
         public bool IsStringValid()
         {
-            if (StringToCheck.StartsWith(')') || StringToCheck.EndsWith('(')) return false;
+            if (string.IsNullOrEmpty(StringToCheck)) return false;
+            if (StringToCheck.StartsWith(")") || StringToCheck.EndsWith("(")) return false;
             else
+            {
+                if (StringToCheck.Length % 2 != 0) return false;
+                else
                 {
-                    char[] stringArray = StringToCheck.ToCharArray();
-                    int leftParentheseCounter = 0;
-                    int rightParentheseCounter = 0;
-                    if (stringArray.Length%2 != 0 ) return false;
-                    else
-                        {
-                            foreach (var item in stringArray)
-                            {
-                                if (item == '(') leftParentheseCounter++;
-                                else if (item == ')') rightParentheseCounter++;
-                                else return false;
-                            }
-                            if (leftParentheseCounter == rightParentheseCounter) return true;
-                        }
+                    while (true)
+                    {
+                        if (StringToCheck == StringToCheck.Replace("()", "")) break;
+                        StringToCheck = StringToCheck.Replace("()", "");
+                    }
+                    return (StringToCheck == string.Empty);
                 }
-            return false;
+            }
         }
     }
 }
