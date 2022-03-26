@@ -25,15 +25,15 @@ namespace Zad2
             else
             {
                 if (StringToCheck.Length % 2 != 0) return false;
-                else
+                int equalityCounter = 0;
+                char[] stringArray = StringToCheck.ToCharArray();
+                foreach (char sign in stringArray)
                 {
-                    while (true)
-                    {
-                        if (StringToCheck == StringToCheck.Replace("()", "")) break;
-                        StringToCheck = StringToCheck.Replace("()", "");
-                    }
-                    return (StringToCheck == string.Empty);
+                    if (sign == '(') equalityCounter++;
+                    else if (sign == ')') equalityCounter--;
+                    if (equalityCounter < 0) return false;
                 }
+                return (equalityCounter == 0);
             }
         }
     }
